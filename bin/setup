@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "Installing gem 'dep' for basic dependency tracking"
+gem install dep
+
+type rbenv >/dev/null 2>&1 && rbenv rehash
+
+echo "Running 'dep install'"
+dep install
