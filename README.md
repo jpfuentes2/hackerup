@@ -1,2 +1,3 @@
-hackerup
-========
+## Setup
+
+`bin/setup`
