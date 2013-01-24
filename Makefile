@@ -1,6 +1,6 @@
-REPORTER = dot
+.PHONY: default
 
-all: test
+default: test
 
 setup:
 	@bin/setup
