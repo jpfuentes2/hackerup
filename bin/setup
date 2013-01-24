@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
+set -e
+
 type dep >/dev/null 2>&1 || (echo "Installing gem 'dep' for basic dependency tracking" && gem install dep)
 
 type rbenv >/dev/null 2>&1 && rbenv rehash
 
-echo "Running 'dep install'"
-dep install
+dep check | grep -q 'all cool'
+
+if [ "$?" -ne "0" ]; then
+  echo "Running 'dep install'"
+  dep install
+fi
