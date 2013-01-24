@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+out=`(time -p cutest -r ./test/helper.rb test/*.rb) 2>&1`
+lines=$(echo "$out" | wc -l)
+echo "$out" | head -n $(expr $lines - 2)
