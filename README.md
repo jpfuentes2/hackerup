@@ -4,4 +4,8 @@
 
 ## Tests
 
-`make` or `bin/test`
+`make`
+
+`bin/test`
+
+`bin/test -f` Run forever until `SIGINT`.
