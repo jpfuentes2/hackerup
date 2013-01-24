@@ -1,3 +1,7 @@
 ## Setup
 
-`bin/setup`
+`make setup`
+
+## Tests
+
+`make` or `bin/test`
