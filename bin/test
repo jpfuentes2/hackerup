@@ -1,5 +1,42 @@
 #!/usr/bin/env bash
 
-out=`(time -p cutest -r ./test/helper.rb test/*.rb) 2>&1`
-lines=$(echo "$out" | wc -l)
-echo "$out" | head -n $(expr $lines - 2)
+function usage() {
+  echo "Usage: fast_tests [options]
+
+  -f        Run tests forever until SIGINT.
+"
+  exit
+}
+
+function run_tests() {
+  out=`(time -p cutest -r ./test/helper.rb test/*.rb) 2>&1`
+  lines=$(echo "$out" | wc -l)
+  echo "$out" | head -n $(expr $lines - 2)
+}
+
+run_forever=false
+
+while getopts "fs:h" opt; do
+  case $opt in
+    f)
+      run_forever=true
+      ;;
+    h)
+      usage
+      ;;
+    \?)
+      usage
+      ;;
+esac
+done
+
+if $run_forever; then
+  until false; do
+    echo "Testing at `date +"%T"`"
+    run_tests
+    sleep 5
+    echo ""
+  done
+else
+  run_tests
+fi
