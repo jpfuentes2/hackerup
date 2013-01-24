@@ -12,3 +12,5 @@ if [ "$?" -ne "0" ]; then
   echo "Running 'dep install'"
   dep install
 fi
+
+# TODO: consider adding input line for using gemsets via gs, rbenv, rvm, etc; or, inform the user it is their responsibility
